@@ -1,0 +1,20 @@
+/* GENERAL STYLING*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  grid-template-rows: repeat(6, auto);
+  background-color: lightblue;
+}
+
+.grid-item {
+  border: 1px solid green;
+}
+
+
