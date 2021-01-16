@@ -9,12 +9,19 @@
 .grid-wrapper {
   display: grid;
   grid-template-columns: repeat(6, auto);
-  grid-template-rows: repeat(6, auto);
-  background-color: lightblue;
+  grid-template-rows: repeat(6, 150px);
+  grid-gap: 10px;
+  margin: 10px;
 }
 
 .grid-item {
   border: 1px solid green;
+  background-color: lightblue;
+  font-size: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 
