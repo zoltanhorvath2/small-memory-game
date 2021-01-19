@@ -3,7 +3,8 @@
 const setUpCells = 36;
 const halfOfCells = setUpCells/2;
 
-function arrayMaker() {
+arrayMaker = () => {
+
   const cells = [];
 
   for (let i = 1; i <= halfOfCells; i++){
@@ -14,18 +15,28 @@ function arrayMaker() {
   return cells;
 }
 
-// tableCreator returns an array with random elements, we have to add them to the grid
+tableMaker = () => {
 
-const shuffledArr = arrayMaker();
+  const shuffledArr = arrayMaker();
 
-for (let i = 0; i < shuffledArr.length; i++){
-  const newDiv = document.createElement('div');
-  const wrapper = document.querySelector('.grid-wrapper');
-  wrapper.appendChild(newDiv);
-  
+  for (let i = 0; i < shuffledArr.length; i++){
+    // Creating the grid-items and the content
+
+    const newDiv = document.createElement('div');
+    const wrapper = document.querySelector('.grid-wrapper');
+    wrapper.appendChild(newDiv);
+    const newContent = document.createTextNode(`${shuffledArr[i]}`);
+    newDiv.appendChild(newContent);
+
+    // Add the .grit-item class to it
+    
+    newDiv.classList.add('grid-item');
+
+  }
 }
 
-// We have to wire up the grid
+tableMaker();
 
-// Clicking on elements
+
+
 
