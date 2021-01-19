@@ -1,30 +1,31 @@
 // Creating the table for onload
 
 const setUpCells = 36;
+const halfOfCells = setUpCells/2;
 
-document.body.onload = addElements;
+function arrayMaker() {
+  const cells = [];
 
-function addElements () {
-
-  for (let i = 0; i < setUpCells; i++){
-    const newDiv = document.createElement('div');
-    const shuffle = () => {
-      const randomize = Math.floor(Math.random() * 10) * 2;
-        return randomize;
-    };
-    const newContent = document.createTextNode(`${shuffle()}`);
-    newDiv.appendChild(newContent);
-    const gridWrapper = document.querySelector('.grid-wrapper');
-    gridWrapper.appendChild(newDiv);
-    newDiv.classList.add('grid-item');
-
+  for (let i = 1; i <= halfOfCells; i++){
+    cells.push(i);
+    cells.push(i);
   }
+  shuffle(cells);
+  return cells;
+}
+
+// tableCreator returns an array with random elements, we have to add them to the grid
+
+const shuffledArr = arrayMaker();
+
+for (let i = 0; i < shuffledArr.length; i++){
+  const newDiv = document.createElement('div');
+  const wrapper = document.querySelector('.grid-wrapper');
+  wrapper.appendChild(newDiv);
   
 }
 
+// We have to wire up the grid
 
 // Clicking on elements
 
-const clicked = document.addEventListener('click', (event) => {
-   console.log(event);
-});
