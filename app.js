@@ -41,6 +41,16 @@ tableMaker();
 
 // CHECKING AND HIDING THE PAIRS
 
+document.addEventListener('click', (e) => {
+  // Get access to the backside on click
+  const front = e.target;
+  const parent = front.parentNode;
+  const back = parent.querySelector('.backside');
+  parent.classList.add('clicking');
+  
+  console.log(front.classList);
+  
+});
 
 
 
