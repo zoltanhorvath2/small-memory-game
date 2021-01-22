@@ -26,7 +26,7 @@ tableMaker = () => {
         <div class="wrapper">
           <div class="card">
             <div class="backside">${shuffledArr[i]}</div>
-            <div class="frontside"></div>
+            <div class="frontside" id=${shuffledArr[i]}></div>
           </div>
         </div>
     `;
@@ -41,16 +41,21 @@ tableMaker();
 
 // CHECKING AND HIDING THE PAIRS
 
-document.addEventListener('click', (e) => {
-  // Get access to the backside on click
-  const front = e.target;
-  const parent = front.parentNode;
-  const back = parent.querySelector('.backside');
-  parent.classList.add('clicking');
-  
-  console.log(front.classList);
-  
-});
+function clicking() {
+
+  document.addEventListener('click', (e) => {
+    // Get access to the backside on click
+    const clicked = e.target; // clicked element
+    const front = document.querySelector('.frontside'); // expected element?
+    // I want to set a condition, if (clicked element === expected element) then do:
+    const parent = clicked.parentNode;
+    parent.classList.add('clicking');
+    
+  });
+};
+
+clicking();
+
 
 
 
