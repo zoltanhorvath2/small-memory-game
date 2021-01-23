@@ -43,15 +43,17 @@ tableMaker();
 
 function clicking() {
 
-  document.addEventListener('click', (e) => {
-    // Get access to the backside on click
-    const clicked = e.target; // clicked element
-    const front = document.querySelector('.frontside'); // expected element?
-    // I want to set a condition, if (clicked element === expected element) then do:
-    const parent = clicked.parentNode;
-    parent.classList.add('clicking');
-    
+  const clickable = document.querySelectorAll('.frontside');
+
+  clickable.forEach((item) => {
+    item.addEventListener('click', (e) => {
+      // Get access to the backside on click
+      const clicked = e.target; // Clicked element
+      const parent = clicked.parentNode; 
+      parent.classList.add('clicking'); // Add a class to the clicked element
+    });
   });
+  
 };
 
 clicking();
