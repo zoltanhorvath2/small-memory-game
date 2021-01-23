@@ -24,9 +24,9 @@ tableMaker = () => {
     const newDiv = document.createElement('div');
     newDiv.innerHTML = `
         <div class="wrapper">
-          <div class="card">
+          <div class="card" id=${shuffledArr[i]}>
             <div class="backside">${shuffledArr[i]}</div>
-            <div class="frontside" id=${shuffledArr[i]}></div>
+            <div class="frontside"></div>
           </div>
         </div>
     `;
@@ -45,15 +45,25 @@ function clicking() {
 
   const clickable = document.querySelectorAll('.frontside');
 
+  const checker = [];
+  [ first, second ] = checker;
   clickable.forEach((item) => {
     item.addEventListener('click', (e) => {
       // Get access to the backside on click
       const clicked = e.target; // Clicked element
       const parent = clicked.parentNode; 
-      parent.classList.add('clicking'); // Add a class to the clicked element
+      parent.classList.add('clicking'); // Add a class to the clicked element and flip it
+      setTimeout(() => { 
+        parent.classList.remove('clicking');
+      }, 1500);
+      if (checker.length < 2) {
+        checker.push(parent.id)
+      } else {
+        parent.classList.remove('clicking');
+        checker.splice(0,2);
+      }
     });
   });
-  
 };
 
 clicking();

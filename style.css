@@ -49,6 +49,7 @@
   background-color: lightblue;
   font-size: 3rem;
   backface-visibility: hidden;
+  box-shadow: 10px 5px 5px grey;
 }
 
 .backside {
@@ -63,6 +64,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  box-shadow: 10px 5px 5px grey;
 }
 
 
