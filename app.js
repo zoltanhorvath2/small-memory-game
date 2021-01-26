@@ -15,6 +15,7 @@ arrayMaker = () => {
   return cells;
 }
 
+
 tableMaker = () => {
 
   const shuffledArr = arrayMaker();
@@ -61,17 +62,18 @@ function clicking() {
           [ match1, match2 ] = firstMatch;
           match1.classList.add('hide');
           match2.classList.add('hide');
-          // Place of the score counter
         } else {
           setTimeout(() => {
             parent.classList.remove('clicking');
-          }, 2000);
+          }, 1000);
+
         }
       }
       else {
         parent.classList.remove('clicking');
+        checker.length = 0;
       }
-
+      
 
       
     });
