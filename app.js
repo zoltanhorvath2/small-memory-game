@@ -24,7 +24,7 @@ tableMaker = () => {
     const newDiv = document.createElement('div');
     newDiv.innerHTML = `
         <div class="wrapper">
-          <div class="card" id=${shuffledArr[i]}>
+          <div class="card item-${shuffledArr[i]}">
             <div class="backside">${shuffledArr[i]}</div>
             <div class="frontside"></div>
           </div>
@@ -46,22 +46,34 @@ function clicking() {
   const clickable = document.querySelectorAll('.frontside');
 
   const checker = [];
-  [ first, second ] = checker;
   clickable.forEach((item) => {
     item.addEventListener('click', (e) => {
-      // Get access to the backside on click
-      const clicked = e.target; // Clicked element
+      const clicked = e.target; 
       const parent = clicked.parentNode; 
-      parent.classList.add('clicking'); // Add a class to the clicked element and flip it
-      setTimeout(() => { 
-        parent.classList.remove('clicking');
-      }, 1500);
-      if (checker.length < 2) {
-        checker.push(parent.id)
-      } else {
-        parent.classList.remove('clicking');
-        checker.splice(0,2);
+      parent.classList.add('clicking'); 
+      
+      const selected = parent.classList[1];
+      if (checker.length < 2){ 
+        checker.push(selected);
+        [ first, second ] = checker;
+        if (first === second){
+          firstMatch = [...document.querySelectorAll(`.${first}`)];
+          [ match1, match2 ] = firstMatch;
+          match1.classList.add('hide');
+          match2.classList.add('hide');
+          // Place of the score counter
+        } else {
+          setTimeout(() => {
+            parent.classList.remove('clicking');
+          }, 2000);
+        }
       }
+      else {
+        parent.classList.remove('clicking');
+      }
+
+
+      
     });
   });
 };
