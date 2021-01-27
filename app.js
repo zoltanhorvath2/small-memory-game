@@ -2,6 +2,8 @@
 
 const setUpCells = 36;
 const halfOfCells = setUpCells/2;
+const cardsChosen = [];
+let score = 0;
 
 arrayMaker = () => {
 
@@ -13,7 +15,7 @@ arrayMaker = () => {
   }
   shuffle(cells);
   return cells;
-}
+};
 
 
 tableMaker = () => {
@@ -35,52 +37,53 @@ tableMaker = () => {
     const generalWrapper = document.querySelector('.grid-wrapper');
     generalWrapper.appendChild(newDiv);
   }
-}
+};
 
 tableMaker();
 
 
-// CHECKING AND HIDING THE PAIRS
+// FLIPPING THE CARDS
 
-function clicking() {
-
-  const clickable = document.querySelectorAll('.frontside');
-
-  const checker = [];
-  clickable.forEach((item) => {
-    item.addEventListener('click', (e) => {
-      const clicked = e.target; 
-      const parent = clicked.parentNode; 
-      parent.classList.add('clicking'); 
-      
-      const selected = parent.classList[1];
-      if (checker.length < 2){ 
-        checker.push(selected);
-        [ first, second ] = checker;
-        if (first === second){
-          firstMatch = [...document.querySelectorAll(`.${first}`)];
-          [ match1, match2 ] = firstMatch;
-          match1.classList.add('hide');
-          match2.classList.add('hide');
-        } else {
-          setTimeout(() => {
-            parent.classList.remove('clicking');
-          }, 1000);
-
-        }
-      }
-      else {
-        parent.classList.remove('clicking');
-        checker.length = 0;
-      }
-      
-
-      
-    });
-  });
+flip = (e) => {
+    const clicked = e.target; 
+    const parent = clicked.parentNode; 
+    parent.classList.add('clicking');
+    if (cardsChosen.length < 2){
+      cardsChosen.push(parent.classList[1]);
+      check();
+    } else {
+      parent.classList.remove('clicking');
+    }
 };
 
-clicking();
+// CHECKING THE CARDS
+
+check = () => {
+    [ first, second ] = cardsChosen;
+    if (first === second){
+      const firstChosen = document.querySelectorAll(`.${first}`);
+      firstChosen.forEach((item) => item.classList.add('hide'));
+      cardsChosen.length = 0;
+      score++;
+    } else if (first && second) {
+      setTimeout(() => {
+        const chosen = document.querySelectorAll(`.clicking`);
+        chosen.forEach((item) => item.classList.remove('clicking'));
+        cardsChosen.length = 0;
+      }, 1000);
+    }
+};
+
+  const clickable = document.querySelectorAll('.frontside');
+  clickable.forEach((item) => { item.addEventListener('click', flip)});
+
+  
+
+
+
+  
+
+
 
 
 
