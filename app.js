@@ -65,6 +65,8 @@ check = () => {
       firstChosen.forEach((item) => item.classList.add('hide'));
       cardsChosen.length = 0;
       score++;
+      const scoreCounter = document.querySelector('.score-counter');
+      scoreCounter.insertAdjacentHTML('beforeend', ` ${score}`);
     } else if (first && second) {
       setTimeout(() => {
         const chosen = document.querySelectorAll(`.clicking`);
@@ -76,6 +78,16 @@ check = () => {
 
   const clickable = document.querySelectorAll('.frontside');
   clickable.forEach((item) => { item.addEventListener('click', flip)});
+
+  // RELOAD THE PAGE
+
+  reloader = () => {
+    button.classList.add('button-press');
+    window.location.reload();
+  }
+
+  const button = document.querySelector('.reload-button');
+  button.addEventListener('click', reloader);
 
   
 

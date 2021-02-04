@@ -12,6 +12,29 @@ body {
   color: #282120;
 }
 
+.gameboard {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-style: bold;
+  font-size: 4vh;
+  margin: 20px 20px;
+}
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.score-counter {
+  font-size: 1.3rem;
+}
+
 .grid-wrapper {
   display: grid;
   grid-template-columns: repeat(6, auto);
@@ -47,7 +70,7 @@ body {
   transform: rotateY(180deg);
 }
 
-
+/* Front Side */
 .frontside {
   position: absolute;
   width: 100%;
@@ -59,7 +82,10 @@ body {
   background-color: #F8EA8C;
   backface-visibility: hidden;
   box-shadow: 10px 5px 5px grey;
+  cursor: pointer;
 }
+
+/* Back Side */
 
 .backside {
   position: absolute;
@@ -81,11 +107,36 @@ body {
   visibility: hidden;
 }
 
-h2 {
-  text-align: center;
-  font-style: bold;
-  font-size: 4vh;
+
+/* Reload button */
+
+.reload-button {
+  border: 1px solid #282120;
+  background-color: green;
+  color: #F8EFE4;
+  padding: 15px 25px;
+  border-radius: 5px;
+  font-family:'Courier New', Courier, monospace;
+  font-size: 1.2rem;
+  box-shadow: 10px 5px 5px grey;
+  cursor: pointer;
 }
+
+.reload-button:hover {
+  background-color: darkgreen;
+  cursor: pointer;
+}
+
+.button-press {
+  color: black;
+}
+
+/* Score counter */
+
+
+
+
+
 
 
 
