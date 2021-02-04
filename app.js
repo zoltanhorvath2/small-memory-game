@@ -66,7 +66,7 @@ check = () => {
       cardsChosen.length = 0;
       score++;
       const scoreCounter = document.querySelector('.score-counter');
-      scoreCounter.insertAdjacentHTML('beforeend', ` ${score}`);
+      scoreCounter.innerHTML = `Score: ${score}`;
     } else if (first && second) {
       setTimeout(() => {
         const chosen = document.querySelectorAll(`.clicking`);
